@@ -1,0 +1,6 @@
+@Beerbros_HostAddress = http://localhost:5120
+
+GET {{Beerbros_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
