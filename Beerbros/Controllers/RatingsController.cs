@@ -5,8 +5,6 @@ using Beerbros.Web.Models.DTO;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace Beerbros.Web.Controllers
 {
     [Route("api/beers/{beerId}/[controller]")]
@@ -30,7 +28,7 @@ namespace Beerbros.Web.Controllers
 
         // Methods
 
-        // GET: api/<RatingsController>
+        // GET: api/beers/12345/<RatingsController>
         [HttpGet]
         public IActionResult Get(Int32 beerId)
         {
@@ -38,7 +36,7 @@ namespace Beerbros.Web.Controllers
             return new JsonResult(result);
         }
 
-        // GET api/<RatingsController>/5
+        // GET api/beers/12345/<RatingsController>/5
         [HttpGet("{id}", Name = "GetRating")]
         public IActionResult Get(int id, int beerId)
         {
@@ -49,7 +47,7 @@ namespace Beerbros.Web.Controllers
             };
         }
 
-        // POST api/<RatingsController>
+        // POST api/beers/12345/<RatingsController>
         [HttpPost]
         public IActionResult Post(Int32 beerId, [FromBody] RatingDTO rating)
         {
@@ -69,7 +67,7 @@ namespace Beerbros.Web.Controllers
             };
         }
 
-        // PATCH api/<RatingsController>/5
+        // PATCH api/beers/12345/<RatingsController>/5
         [HttpPatch("{id}")]
         public IActionResult Patch(Int32 beerId, Int32 id, [FromBody] RatingDTO rating)
         {
@@ -88,7 +86,7 @@ namespace Beerbros.Web.Controllers
             };
         }
 
-        // DELETE api/<RatingsController>/5
+        // DELETE api/beers/12345/<RatingsController>/5
         [HttpDelete("{id}")]
         public IActionResult Delete(Int32 beerId, Int32 id)
         {
