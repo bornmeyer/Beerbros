@@ -34,13 +34,16 @@ namespace Beerbros.Web.Migrations
                         .HasColumnType("float");
 
                     b.Property<int>("AddUser")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("add_user");
 
                     b.Property<int>("BreweryId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("brewery_id");
 
                     b.Property<int>("CategoryId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("cat_id");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -65,8 +68,10 @@ namespace Beerbros.Web.Migrations
                     b.Property<float>("Srm")
                         .HasColumnType("float");
 
-                    b.Property<int>("StyleId")
-                        .HasColumnType("int");
+                    b.Property<string>("StyleId")
+                        .IsRequired()
+                        .HasColumnType("longtext")
+                        .HasColumnName("style_id");
 
                     b.Property<float>("Upc")
                         .HasColumnType("float");
@@ -77,9 +82,8 @@ namespace Beerbros.Web.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.HasIndex("StyleId");
 
-                    b.ToTable("Beers");
+                    b.ToTable("beers");
                 });
 
             modelBuilder.Entity("Beerbros.Web.Models.Brewery", b =>
@@ -147,7 +151,7 @@ namespace Beerbros.Web.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Breweries");
+                    b.ToTable("breweries");
                 });
 
             modelBuilder.Entity("Beerbros.Web.Models.Category", b =>
@@ -168,7 +172,7 @@ namespace Beerbros.Web.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("categories");
                 });
 
             modelBuilder.Entity("Beerbros.Web.Models.Rating", b =>
@@ -259,7 +263,7 @@ namespace Beerbros.Web.Migrations
 
                     b.HasIndex("BeerId");
 
-                    b.ToTable("Ratings");
+                    b.ToTable("ratings");
                 });
 
             modelBuilder.Entity("Beerbros.Web.Models.Style", b =>
@@ -285,7 +289,7 @@ namespace Beerbros.Web.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Styles");
+                    b.ToTable("styles");
                 });
 
             modelBuilder.Entity("Beerbros.Web.Models.Beer", b =>
@@ -301,12 +305,7 @@ namespace Beerbros.Web.Migrations
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("Beerbros.Web.Models.Style", "Style")
-                        .WithMany("Beers")
-                        .HasForeignKey("StyleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                                        
 
                     b.Navigation("Brewery");
 

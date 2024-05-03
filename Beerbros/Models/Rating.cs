@@ -1,8 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
+using Beerbros.Models;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.OpenApi;
 
 namespace Beerbros.Web.Models
 {
+    [Table("ratings")]
     public class Rating
     {
         [Column("ID")]
@@ -10,6 +14,7 @@ namespace Beerbros.Web.Models
 
         public String Name { get; set; }
 
+        [Column("bier_id")]
         public Int32 BeerId {  get; set; }
 
         [Column("Bewertung")]
@@ -28,7 +33,10 @@ namespace Beerbros.Web.Models
         public String Comment {  get; set; }
 
         [Column("Bild")]
-        public Byte[] Picture { get; set; }
+        public Byte[] Picture { get; set; } = new byte[0];
+
+        [Column("Behaelter")]
+        public String Container {  get; set; }
 
         [Column("Temp")]
         public String Temperature{ get; set; }
@@ -46,17 +54,13 @@ namespace Beerbros.Web.Models
         public String Country {  get; set; }
 
         [Column("Stadt")]
-        public String City {  get; set; }
-
-        [Column("Bild_URL")]
-        public String PictureUrl {  get; set; }
+        public String City {  get; set; }      
 
         [Column("lon")]
         public Double Longitude {  get; set; }
 
         [Column("lat")]
         public Double Latitude { get; set; }
-
-        public Beer Beer { get; set; }
     }
+
 }

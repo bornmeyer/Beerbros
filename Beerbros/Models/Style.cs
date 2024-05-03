@@ -2,6 +2,7 @@
 
 namespace Beerbros.Web.Models
 {
+    [Table("styles")]
     public class Style
     {
         public Int32 Id {  get; set; }
@@ -13,9 +14,6 @@ namespace Beerbros.Web.Models
         [Column("last_mod")]
         public DateTime ModifiedAt { get; set; }
 
-        public Category Category { get; set; }
-
-        public ICollection<Beer> Beers { get; set; }
-
+        public virtual Category Category { get; set; }
     }
 }

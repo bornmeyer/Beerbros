@@ -2,6 +2,7 @@
 
 namespace Beerbros.Web.Models
 {
+    [Table("categories")]
     public class Category
     {
         public Int32 Id { get; set; }

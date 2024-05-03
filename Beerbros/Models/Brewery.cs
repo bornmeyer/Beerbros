@@ -2,6 +2,8 @@
 
 namespace Beerbros.Web.Models
 {
+    [Table("breweries")]
+
     public class Brewery
     {
         public Int32 Id { get; set; }
