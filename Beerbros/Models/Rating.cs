@@ -10,7 +10,7 @@ namespace Beerbros.Web.Models
 
         public String Name { get; set; }
 
-        public String BeerId {  get; set; }
+        public Int32 BeerId {  get; set; }
 
         [Column("Bewertung")]
         public Int32 Score {  get; set; }

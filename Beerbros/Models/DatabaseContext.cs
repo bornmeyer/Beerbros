@@ -15,7 +15,7 @@ namespace Beerbros.Models
 
         public DbSet<Style> Styles { get; set; }
 
-        public DatabaseContext(DbContextOptions<DatabaseContext> options)
+        public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
         {
             
         }
