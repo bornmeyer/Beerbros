@@ -1,0 +1,10 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: ./Beerbros/Dockerfile
+    ports:
+      - "5566:8080"
+      - "5567:8081"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development #to enable swagger on homelab
