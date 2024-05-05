@@ -9,17 +9,17 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["Beerbros/Beerbros.csproj", "Beerbros/"]
-RUN dotnet restore "./Beerbros/./Beerbros.csproj"
+COPY ["Beerbros/Beerbros.Web.csproj", "Beerbros/"]
+RUN dotnet restore "./Beerbros/./Beerbros.Web.csproj"
 COPY . .
 WORKDIR "/src/Beerbros"
-RUN dotnet build "./Beerbros.csproj" -c $BUILD_CONFIGURATION -o /app/build
+RUN dotnet build "./Beerbros.Web.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./Beerbros.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./Beerbros.Web.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Beerbros.dll"]
+ENTRYPOINT ["dotnet", "Beerbros.Web.dll"]
